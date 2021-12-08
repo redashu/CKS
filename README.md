@@ -2,47 +2,31 @@
 
 ## Kubernetes security category 
 
-<ol>
-  <li>Host Os level </li>
-  <li>Kubernetes cluster Level </li>
-  <li>Application Level </li>
+## Namespace :
 
-</ol>
+### Running two container in same Pid namespace 
 
-### Host OS level security 
+### containers running 
 
-<ol>
-  <li>Minion nodes should do only kubernetes things </li>
-  <li>Reduce attack surface : By reducing unnecessary application , keep things up to date </li>
-  <li>Runtime security tools </li>
-  <li>Restrict access to Minion Host : IAM or SSH </li>
-</ol>
+```
+docker run --name c11 -d ubuntu sh -c 'sleep 1d'
+ docker run --name c22 --pid=container:c11  -d ubuntu sh -c 'sleep 100d'
+ 
+```
+### checking containers with namespace 
 
+```
+ docker exec c11 ps aux 
+USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root         1  0.0  0.0   2612   608 ?        Ss   13:06   0:00 sh -c sleep 1d
+root         8  0.0  0.0   2512   588 ?        S    13:06   0:00 sleep 1d
+root        15  0.0  0.0   2612   608 ?        Ss   13:08   0:00 sh -c sleep 100d
+root        24  0.0  0.0   2512   588 ?        S    13:08   0:00 sleep 100d
+root        31  0.0  0.0   5900  2888 ?        Rs   13:19   0:00 ps aux
 
-## Cloud Native Security 
+```
+ 
+ 
+ 
 
-<ol>
-  <li>Cloud</li>
-  <li>Container</li>
-  <li>Cluster</li>
-  <li>Code</li>
-</ol>
-
-
-## Cluster Hardening points
-
-<ol>
-  <li>CIS Benchmark </li>
-  <li>Node Metadata and Endpoints protection </li>
-  <li>DashBoard Security </li>
-  <li>UPgrading Cluster</li>
-  <li>Securing Images</li>
-  <li>Network Policies </li>
-</ol>
-
-##  CIS {Center for InterNet Security} Benchmarking 
-
-### Security Benchmark by CIS 
-
-<img src="cis1.png">
 
