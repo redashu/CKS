@@ -46,3 +46,16 @@
 
 <img src="cis1.png">
 
+### SErvice account with CLusterorle and clusterrolebinding --
+
+```
+ 10  kubectl create clusterrolebinding  ns1bind  --clusterrole=view  --serviceaccount=ns1:pipeline 
+   11  kubectl create clusterrolebinding  ns2bind  --clusterrole=view  --serviceaccount=ns2:pipeline 
+   12  kubectl get roles -n ns1
+   13  k get clusterrole view 
+   14  k create clusterrole  pipe-deploy  --verb create,delete --resource deployment 
+   15  kubectl create clusterrolebinding  ns1binddep  --clusterrole=pipe-deploy   --serviceaccount=ns1:pipeline 
+   16  kubectl create clusterrolebinding  ns2binddep  --clusterrole=pipe-deploy   --serviceaccount=ns2:pipeline 
+```
+
+
