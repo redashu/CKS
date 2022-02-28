@@ -40,9 +40,8 @@
   <li>Network Policies </li>
 </ol>
 
-##  CIS {Center for InterNet Security} Benchmarking 
 
-### Security Benchmark by CIS 
+## Network policy : Firewall for k8s POds..
 
-<img src="cis1.png">
+
 
