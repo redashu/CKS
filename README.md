@@ -58,4 +58,23 @@
    16  kubectl create clusterrolebinding  ns2binddep  --clusterrole=pipe-deploy   --serviceaccount=ns2:pipeline 
 ```
 
+## k8s users with roles and rolebinding --
+
+### create role with permission and bind it with k8s user 
+
+```
+  4  k -n applications  create role smokerole --verb create,delete --resource  pod,deployment,sts 
+    5  k -n applications  create rolebinding  smokebind  --user smoke --role smokerole 
+```
+
+### clusterrole with rolebinding for k8s users --
+
+```
+ 7  k -n applications  create rolebinding smoke-view --clusterrole  view --uesr smoke
+    8  k -n applications  create rolebinding smoke-view --clusterrole  view --user  smoke
+    9  k -n default  create rolebinding smoke-view --clusterrole  view --user  smoke
+   10  k -n kube-public   create rolebinding smoke-view --clusterrole  view --user  smoke
+   11  k -n kube-node-lease    create rolebinding smoke-view --clusterrole  view --user  smoke
+```
+
 
