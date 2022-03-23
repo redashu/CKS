@@ -68,6 +68,6 @@
 
 ### more info 
 
-<img src="gvisor2.png">
+<img src="givsor2.png">
 
 
