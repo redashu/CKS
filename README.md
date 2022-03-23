@@ -40,9 +40,34 @@
   <li>Network Policies </li>
 </ol>
 
-##  CIS {Center for InterNet Security} Benchmarking 
+# OCI [open container initiative]
 
-### Security Benchmark by CIS 
+## a project by LF to set standards and specifications for container and images 
 
-<img src="cis1.png">
+<img src="oci1.png">
+
+## any runtime engine sending instruction to RUNC
+
+<img src="runc.png">
+
+## early days how k8s --kubelet was creating container 
+
+<img src="k8s1.png">
+
+### CRI (container runtime interface ) how kubelet using CRI to create container 
+
+<img src="cri.png">
+
+## COntainer sandbox using kata containers 
+
+<img src="kata.png">
+
+### container sanboxing using gVisor 
+
+<img src="gvisor.png">
+
+### more info 
+
+<img src="gvisor2.png">
+
 
