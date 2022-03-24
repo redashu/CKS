@@ -40,9 +40,8 @@
   <li>Network Policies </li>
 </ol>
 
-##  CIS {Center for InterNet Security} Benchmarking 
+## OS level security --
 
-### Security Benchmark by CIS 
 
-<img src="cis1.png">
+
 
