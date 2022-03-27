@@ -99,3 +99,9 @@ k create role podsecpol-access1 --verb=use --resource=podsecuritypolicies
 
 ### Now we can create deployments also 
 
+## Kernel vs user space --
+
+<img src="space.png">
+
+
+
