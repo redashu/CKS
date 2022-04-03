@@ -40,9 +40,29 @@
   <li>Network Policies </li>
 </ol>
 
-##  CIS {Center for InterNet Security} Benchmarking 
+## scaning container image 
 
-### Security Benchmark by CIS 
+### Trivy 
 
-<img src="cis1.png">
+### scan image 
+
+```
+trivy image  python:3.6.12-alpine3.11
+
+```
+
+### scan image with specific severity 
+
+```
+trivy image --severity HIGH  --output python1.txt  python:3.6.12-alpine3.11 
+```
+
+## Note: we can scan image tar also 
+
+```
+trivy image --input /root/alpine.tar   --format  json  --output alpine.json
+```
+
+
+
 
