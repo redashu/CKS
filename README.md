@@ -63,6 +63,27 @@ trivy image --severity HIGH  --output python1.txt  python:3.6.12-alpine3.11
 trivy image --input /root/alpine.tar   --format  json  --output alpine.json
 ```
 
+### using Falco to detects threats 
+
+### iNstalled falco and check service using systemctl 
+
+### falco monitor 
+
+<img src="falco.png">
+
+
+### capture logs using journalctl 
+
+```
+journalctl  -fu falco 
+-- Logs begin at Sun 2022-04-03 01:13:06 UTC. --
+Apr 03 01:49:31 controlplane falco[5634]: Falco initialized with configuration file /etc/falco/falco.yaml
+Apr 03 01:49:31 controlplane falco[5634]: Loading rules from file /etc/falco/falco_rules.yaml:
+Apr 03 01:49:31 controlplane falco[5634]: Loading rules from file /etc/falco/falco_rules.local.yaml:
+Apr 03 01:49:31 controlplane falco[5634]: Sun Apr  3 01:49:31 2022: Loading rules from file /etc/falco/falco_rules.local.yaml:
+Apr 03 01:49:31 controlplane falco[5634]:
+```
+
 
 
 
