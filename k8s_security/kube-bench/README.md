@@ -57,5 +57,43 @@ root@ip-172-31-22-49:/opt# cp kube-bench /usr/bin/
 root@ip-172-31-22-49:/opt# kube-bench version 
 0.6.2
 ```
+### running the bench marking 
 
-    
+```
+kube-bench run --config-dir   /opt/cfg/  --config /opt/cfg/config.yaml
+```
+
+## Deploy kube-bench in k8s cluster 
+
+```
+kubectl apply -f https://raw.githubusercontent.com/aquasecurity/kube-bench/main/job.yaml
+
+```
+
+### lets verify that 
+
+```
+root@ip-172-31-22-49:~# kubectl get jobs.batch 
+NAME         COMPLETIONS   DURATION   AGE
+kube-bench   1/1           5s         36s
+
+========
+root@ip-172-31-22-49:~# kubectl get po 
+NAME               READY   STATUS      RESTARTS   AGE
+kube-bench-w5djx   0/1     Completed   0          57s
+
+
+```
+
+### checking the report 
+
+```
+root@ip-172-31-22-49:~# kubectl logs kube-bench-w5djx 
+[INFO] 4 Worker Node Security Configuration
+[INFO] 4.1 Worker Node Configuration Files
+[FAIL] 4.1.1 Ensure that the kubelet service file permissions are set to 600 or more restrictive (Automated)
+[PASS] 4.1.2 Ensure that the kubelet service file ownership is set to root:root (Automated)
+[PASS] 4.1.3 If proxy kubeconfig file exists ensure permissions are set to 600 or more restrictive (Manual)
+```
+
+
