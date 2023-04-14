@@ -32,3 +32,53 @@ root@ip-172-31-21-222:~# strace -c touch  /tmp/hello1.txt
 100.00    0.000000                   103         2 total
 
 ```
+
+### Time for Restricing syscall used by any program 
+
+### list of some syscall made use by any program 
+<img src="sys1.png">
+
+### checking syscall support in linux kernel 
+
+```
+root@ip-172-31-21-222:~# grep -i seccomp  /boot/config-$(uname -r)
+CONFIG_HAVE_ARCH_SECCOMP=y
+CONFIG_HAVE_ARCH_SECCOMP_FILTER=y
+CONFIG_SECCOMP=y
+CONFIG_SECCOMP_FILTER=y
+# CONFIG_SECCOMP_CACHE_DEBUG is not set
+```
+
+## see a demo or syscall 
+
+### creating container and try to change time 
+
+```
+root@ip-172-31-21-222:~# docker run -it --rm  docker/whalesay  sh 
+# date -s "19 april 2022 18:19:09"
+date: cannot set date: Operation not permitted
+Tue Apr 19 18:19:09 UTC 2022
+# date
+Fri Apr 14 01:13:24 UTC 2023
+# 
+
+```
+
+### checking seccomp status 
+
+```
+# ps -ef
+UID          PID    PPID  C STIME TTY          TIME CMD
+root           1       0  0 01:12 pts/0    00:00:00 sh
+root           9       1  0 01:14 pts/0    00:00:00 ps -ef
+# grep -i seccomp  /proc/1/status
+Seccomp:	2
+Seccomp_filters:	1
+# 
+
+```
+
+### First understand that seccomp modes
+
+<img src="secc.png">
+
