@@ -82,3 +82,60 @@ Seccomp_filters:	1
 
 <img src="secc.png">
 
+### seccomp profile look like 
+
+<img src="slook.png">
+
+### default allow & block syscall profile 
+
+<img src="block_allow.png">
+
+## Note: 
+
+### Docker by default block these many syscall 
+
+<img src="sysblock.png">
+
+### creating container with no seccomp profile 
+
+```
+root@ip-172-31-21-222:~# docker run -it --rm   --security-opt  seccomp=unconfined  docker/whalesay  sh 
+```
+
+### passing custom seccomp profile and block mkdir syscall
+
+```
+root@ip-172-31-21-222:~# docker run -it --rm --security-opt seccomp=/root/custom1.json alpine sh
+/ # mkdir hello
+mkdir: can't create directory 'hello': Operation not permitted
+```
+
+### How to check default block syscall by docker 
+
+```
+root@ip-172-31-21-222:~# docker run --rm r.j3ss.co/amicontained amicontained
+Container Runtime: docker
+Has Namespaces:
+	pid: true
+	user: false
+AppArmor Profile: docker-default (enforce)
+Capabilities:
+	BOUNDING -> chown dac_override fowner fsetid kill setgid setuid setpcap net_bind_service net_raw sys_chroot mknod audit_write setfcap
+Seccomp: filtering
+Blocked Syscalls (61):
+	MSGRCV SYSLOG SETPGID SETSID USELIB USTAT SYSFS VHANGUP PIVOT_ROOT _SYSCTL ACCT SETTIMEOFDAY MOUNT UMOUNT2 SWAPON SWAPOFF REBOOT SETHOSTNAME SETDOMAINNAME IOPL IOPERM CREATE_MODULE INIT_MODULE DELETE_MODULE GET_KERNEL_SYMS QUERY_MODULE QUOTACTL NFSSERVCTL GETPMSG PUTPMSG AFS_SYSCALL TUXCALL SECURITY LOOKUP_DCOOKIE CLOCK_SETTIME VSERVER MBIND SET_MEMPOLICY GET_MEMPOLICY KEXEC_LOAD ADD_KEY REQUEST_KEY KEYCTL MIGRATE_PAGES UNSHARE MOVE_PAGES PERF_EVENT_OPEN FANOTIFY_INIT NAME_TO_HANDLE_AT OPEN_BY_HANDLE_AT SETNS PROCESS_VM_READV PROCESS_VM_WRITEV KCMP FINIT_MODULE KEXEC_FILE_LOAD BPF USERFAULTFD PKEY_MPROTECT PKEY_ALLOC PKEY_FREE
+Looking for Docker.sock
+```
+
+### checking in k8s 
+
+<img src="k8s_s.png">
+
+### Onk8s nodes we have to create these folders 
+
+<img src="folder.png">
+
+### using custom profile 
+
+<img src="scc.png">
+
