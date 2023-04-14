@@ -80,3 +80,18 @@ root@ip-172-31-25-185:/etc/apparmor.d#
    82  aa-enforce /usr/bin/curl 
 ```
 
+## How profile look like 
+
+### default write deny 
+
+<img src="deny.png">
+
+### one more rule 
+
+<img src="deny1.png">
+
+### remount of root fs deny 
+
+<img src="deny2.png">
+
+
